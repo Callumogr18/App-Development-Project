@@ -6,18 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Planets")
+@Table(name="Moons")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Planet {
+public class Moon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long planetId;
+    private long moonId;
     @Column(nullable = false)
-    private String planetName;
-    private String planetType;
-    private double radiumKm;
-    private double massKg;
+    private String moonName;
+    private double diameterKm;
     private int orbitalPeriodDays;
+
+    @ManyToOne
+    @JoinColumn(name="planet_id", nullable = false)
+    private Planet planet;
 }
