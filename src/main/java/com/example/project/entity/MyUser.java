@@ -46,6 +46,9 @@ public class MyUser {
     public void setPassword(String password) {
         this.password = password;
     }
+    public void setRole(Role role){
+        this.role = role;
+    }
 
     public enum Role {
         ADMIN, STAFF, STUDENT
