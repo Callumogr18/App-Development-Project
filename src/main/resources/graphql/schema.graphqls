@@ -1,12 +1,19 @@
+enum Role {
+    ADMIN
+    STAFF
+    STUDENT
+}
 type User {
     userId: ID!
     username: String!
     password: String
+    role: Role!
 }
 
 input NewUserInput {
     username: String!
     password: String
+    role: Role!
 }
 
 type Query {
