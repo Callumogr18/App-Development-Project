@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "myusers")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +21,34 @@ public class MyUser {
     private String password;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Role role;
+    private Role role = Role.STUDENT;
     private boolean enabled = true;
     private boolean accountNonExpired = true;
     private boolean credentialsNonExpired = true;
     private boolean accountNonLocked = true;
+
+    public MyUser() {
+    }
+
+    // All-args constructor
+    public MyUser(Long userId, String username, String password, Role role,
+                  boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired,
+                  boolean accountNonLocked) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.enabled = enabled;
+        this.accountNonExpired = accountNonExpired;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.accountNonLocked = accountNonLocked;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setRole(Role role){
+        this.role = role;
+    }
 
     public enum Role {
         ADMIN, STAFF, STUDENT
@@ -60,6 +83,11 @@ public class MyUser {
     public Boolean isAccountNonLocked(){
         return this.accountNonLocked;
     }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
 
 
 

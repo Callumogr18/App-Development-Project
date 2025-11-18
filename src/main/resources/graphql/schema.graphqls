@@ -1,0 +1,25 @@
+enum Role {
+    ADMIN
+    STAFF
+    STUDENT
+}
+type User {
+    userId: ID!
+    username: String!
+    password: String
+    role: Role!
+}
+
+input NewUserInput {
+    username: String!
+    password: String
+    role: Role!
+}
+
+type Query {
+    getUserById(userId: ID!): User
+}
+
+type Mutation {
+    createUser(user: NewUserInput!): User
+}
