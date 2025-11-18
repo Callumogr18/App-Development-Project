@@ -24,7 +24,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((auth) ->
-                        auth.requestMatchers(HttpMethod.POST, "/h2/**").permitAll()
+                        auth.requestMatchers(HttpMethod.POST, "/graphql/**").permitAll()
+                                .requestMatchers( "/**").permitAll()
                                 .requestMatchers(HttpMethod.POST).hasAnyRole("ADMIN", "USER")
                                 .requestMatchers(HttpMethod.PUT).hasAnyRole("ADMIN", "USER")
                                 .requestMatchers(HttpMethod.PATCH).hasAnyRole("ADMIN", "USER")
