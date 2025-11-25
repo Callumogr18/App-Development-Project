@@ -23,8 +23,10 @@ public class MyUserServiceImpl implements MyUserService{
     }
 
     @Override
-    public MyUser getUserById(long userId) {
+    public MyUser getUserById(long userId) throws NotFoundException {
 
-        return myUserRepo.findById(userId).orElseThrow(() -> new NotFoundException("User not found with id: " + userId));
+        return myUserRepo.findById(userId).orElseThrow(
+                () -> new NotFoundException("User Not found ID: " + userId)
+        );
     }
 }
