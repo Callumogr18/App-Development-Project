@@ -15,7 +15,7 @@ public class Moon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long moonId;
     @Column(nullable = false)
-    private String moonName;
+    private String name;
     private double diameterKm;
     private int orbitalPeriodDays;
 

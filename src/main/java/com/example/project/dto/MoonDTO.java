@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MoonDTO {
     private Long moonId;
-    private String moonName;
+    private String name;
     private double diameterKm;
     private int orbitalPeriodDays;
     private Long planetId;

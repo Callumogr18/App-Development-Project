@@ -17,7 +17,7 @@ public class Planet {
     @Column(nullable = false)
     private String planetName;
     private String planetType;
-    private double radiumKm;
+    private double radiusKm;
     private double massKg;
     private int orbitalPeriodDays;
 }

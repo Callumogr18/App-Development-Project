@@ -1,6 +1,7 @@
 package com.example.project.service;
 
 import com.example.project.entity.MyUser;
+import com.example.project.exceptions.NotFoundException;
 import com.example.project.repository.MyUserRepo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,6 @@ public class MyUserServiceImpl implements MyUserService{
     @Override
     public MyUser getUserById(long userId) {
 
-        return myUserRepo.findById(userId).orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+        return myUserRepo.findById(userId).orElseThrow(() -> new NotFoundException("User not found with id: " + userId));
     }
 }

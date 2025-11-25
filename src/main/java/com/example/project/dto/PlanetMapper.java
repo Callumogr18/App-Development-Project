@@ -1,6 +1,5 @@
 package com.example.project.dto;
 
-import com.example.project.dto.PlanetDTO;
 import com.example.project.entity.Planet;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +10,7 @@ public class PlanetMapper {
                 planet.getPlanetId(),
                 planet.getPlanetName(),
                 planet.getPlanetType(),
-                planet.getRadiumKm(),
+                planet.getRadiusKm(),
                 planet.getMassKg(),
                 planet.getOrbitalPeriodDays()
         );
