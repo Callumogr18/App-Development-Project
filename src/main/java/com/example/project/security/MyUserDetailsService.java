@@ -23,6 +23,6 @@ public class MyUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
         return new User(user.getUsername(), user.getPassword(), user.isEnabled(),
                 user.isAccountNonExpired(),user.isCredentialsNonExpired(), user.isAccountNonLocked(),
-                Collections.singletonList(new SimpleGrantedAuthority(user.getRole().name())));
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole().name())));
     }
 }
