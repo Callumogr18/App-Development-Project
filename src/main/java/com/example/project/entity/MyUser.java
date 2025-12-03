@@ -9,16 +9,19 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "myusers")
 @Data
-//@AllArgsConstructor
-//@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+    @Getter
     @Column(unique = true, nullable = false)
     private String username;
+    @Getter
     @Column(nullable = false)
     private String password;
+    @Getter
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role = Role.STUDENT;
@@ -27,22 +30,6 @@ public class MyUser {
     private boolean credentialsNonExpired = true;
     private boolean accountNonLocked = true;
 
-    public MyUser() {
-    }
-
-    // All-args constructor
-    public MyUser(Long userId, String username, String password, Role role,
-                  boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired,
-                  boolean accountNonLocked) {
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-        this.enabled = enabled;
-        this.accountNonExpired = accountNonExpired;
-        this.credentialsNonExpired = credentialsNonExpired;
-        this.accountNonLocked = accountNonLocked;
-    }
     public void setPassword(String password) {
         this.password = password;
     }
@@ -56,17 +43,6 @@ public class MyUser {
 
     public Long getUserId(){
         return this.userId;
-    }
-    public String getPassword(){
-        return this.password;
-    }
-
-    public Role getRole(){
-        return this.role;
-    }
-
-    public String getUsername(){
-        return this.username;
     }
 
     public Boolean isEnabled(){
