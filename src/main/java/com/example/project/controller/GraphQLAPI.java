@@ -2,9 +2,9 @@ package com.example.project.controller;
 
 import com.example.project.dto.NewUserInput;
 import com.example.project.entity.MyUser;
+import com.example.project.exceptions.NotFoundException;
 import com.example.project.service.MyUserService;
-import com.example.project.service.exceptions.BadDataException;
-import com.example.project.service.exceptions.NotFoundException;
+import com.example.project.exceptions.BadDataException;
 import jakarta.validation.Valid;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;

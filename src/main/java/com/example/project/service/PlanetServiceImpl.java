@@ -4,6 +4,7 @@ import com.example.project.dto.PlanetDTO;
 import com.example.project.entity.Planet;
 import com.example.project.exceptions.NotFoundException;
 import com.example.project.repository.PlanetRepo;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class PlanetServiceImpl implements PlanetService {
     private final PlanetRepo planetRepository;
 

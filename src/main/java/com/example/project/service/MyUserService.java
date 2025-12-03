@@ -1,8 +1,7 @@
 package com.example.project.service;
 
 import com.example.project.entity.MyUser;
-import com.example.project.service.exceptions.BadDataException;
-import com.example.project.service.exceptions.NotFoundException;
+import com.example.project.exceptions.BadDataException;
 
 public interface MyUserService {
     MyUser createUser(MyUser myUser) throws NotFoundException, BadDataException;

@@ -9,7 +9,7 @@ import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.graphql.execution.DataFetcherExceptionResolverAdapter;
 import org.springframework.graphql.execution.ErrorType;
 import org.springframework.stereotype.Component;
-import com.example.project.service.exceptions.BadDataException;
+import com.example.project.exceptions.BadDataException;
 @Component
 public class GraphQLHandlers extends DataFetcherExceptionResolverAdapter {
     @Override

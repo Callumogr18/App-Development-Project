@@ -7,15 +7,18 @@ import com.example.project.entity.Planet;
 import com.example.project.exceptions.NotFoundException;
 import com.example.project.repository.MoonRepository;
 import com.example.project.repository.PlanetRepo;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class MoonServiceImpl implements MoonService {
+
     private final MoonRepository moonRepository;
     private final PlanetRepo planetRepository;
 
