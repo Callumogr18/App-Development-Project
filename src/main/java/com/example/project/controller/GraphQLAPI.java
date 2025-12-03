@@ -6,6 +6,7 @@ import com.example.project.exceptions.NotFoundException;
 import com.example.project.service.MyUserService;
 import com.example.project.exceptions.BadDataException;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -13,15 +14,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
 @Controller
-//@AllArgsConstructor
+@AllArgsConstructor
 public class GraphQLAPI {
     private MyUserService myUserService;
     private PasswordEncoder passwordEncoder;
-
-    public GraphQLAPI(MyUserService myUserService, PasswordEncoder passwordEncoder) {
-        this.myUserService = myUserService;
-        this.passwordEncoder = passwordEncoder;
-    }
 
 
     @QueryMapping

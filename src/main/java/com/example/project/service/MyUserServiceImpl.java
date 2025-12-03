@@ -10,13 +10,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Data
-//@AllArgsConstructor
+@AllArgsConstructor
 public class MyUserServiceImpl implements MyUserService{
     private MyUserRepo myUserRepo;
-
-    public MyUserServiceImpl(MyUserRepo myUserRepo) {
-        this.myUserRepo = myUserRepo;
-    }
     @Override
     public MyUser createUser(MyUser myUser) {
         return myUserRepo.save(myUser);
