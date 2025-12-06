@@ -1,11 +1,11 @@
 package com.example.project.service;
 
 import com.example.project.dto.PlanetDTO;
+import com.example.project.dto.PlanetMapper;
 import com.example.project.entity.Planet;
 import com.example.project.exceptions.NotFoundException;
 import com.example.project.repository.PlanetRepo;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,19 +15,20 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class PlanetServiceImpl implements PlanetService {
     private final PlanetRepo planetRepository;
+    private final PlanetMapper planetMapper;
 
     @Override
     public PlanetDTO addPlanet(PlanetDTO planetDTO) {
-        Planet planet = convertToEntity(planetDTO);
+        Planet planet = planetMapper.toEntity(planetDTO);
         Planet savedPlanet = planetRepository.save(planet);
-        return convertToDTO(savedPlanet);
+        return planetMapper.toPlanetDTO(savedPlanet);
     }
 
     @Override
     public List<PlanetDTO> getAllPlanets() {
         return planetRepository.findAll()
                 .stream()
-                .map(this::convertToDTO)
+                .map(planetMapper::toPlanetDTO)
                 .collect(Collectors.toList());
     }
 
@@ -35,7 +36,7 @@ public class PlanetServiceImpl implements PlanetService {
     public PlanetDTO getPlanetById(Long id) {
         Planet planet = planetRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Planet not found with id: " + id));
-        return convertToDTO(planet);
+        return planetMapper.toPlanetDTO(planet);
     }
 
     @Override
@@ -51,7 +52,7 @@ public class PlanetServiceImpl implements PlanetService {
         existingPlanet.setOrbitalPeriodDays(planetDTO.getOrbitalPeriodDays());
 
         Planet updatedPlanet = planetRepository.save(existingPlanet);
-        return convertToDTO(updatedPlanet);
+        return planetMapper.toPlanetDTO(updatedPlanet);
     }
 
     @Override
@@ -66,31 +67,7 @@ public class PlanetServiceImpl implements PlanetService {
     public List<PlanetDTO> getPlanetsByType(String type) {
         return planetRepository.findByPlanetType(type)
                 .stream()
-                .map(this::convertToDTO)
+                .map(planetMapper::toPlanetDTO)
                 .collect(Collectors.toList());
-    }
-
-    // Helper method to convert Entity to DTO
-    private PlanetDTO convertToDTO(Planet planet) {
-        return new PlanetDTO(
-                planet.getPlanetId(),
-                planet.getPlanetName(),
-                planet.getPlanetType(),
-                planet.getRadiusKm(),
-                planet.getMassKg(),
-                planet.getOrbitalPeriodDays()
-        );
-    }
-
-    // Helper method to convert DTO to Entity
-    private Planet convertToEntity(PlanetDTO planetDTO) {
-        return new Planet(
-                planetDTO.getPlanetId(),
-                planetDTO.getPlanetName(),
-                planetDTO.getPlanetType(),
-                planetDTO.getRadiusKm(),
-                planetDTO.getMassKg(),
-                planetDTO.getOrbitalPeriodDays()
-        );
     }
 }

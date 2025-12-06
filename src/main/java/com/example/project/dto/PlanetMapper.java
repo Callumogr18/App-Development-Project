@@ -15,4 +15,15 @@ public class PlanetMapper {
                 planet.getOrbitalPeriodDays()
         );
     }
+
+    public Planet toEntity(PlanetDTO planetDTO) {
+        return new Planet(
+                planetDTO.getPlanetId(),
+                planetDTO.getPlanetName(),
+                planetDTO.getPlanetType(),
+                planetDTO.getRadiusKm(),
+                planetDTO.getMassKg(),
+                planetDTO.getOrbitalPeriodDays()
+        );
+    }
 }
